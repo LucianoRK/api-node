@@ -1,0 +1,29 @@
+{
+  "name": "api-node",
+  "version": "1.0.0",
+  "description": "Teste de api node",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LucianoRK/api-node.git"
+  },
+  "author": "LucianoRK",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LucianoRK/api-node/issues"
+  },
+  "homepage": "https://github.com/LucianoRK/api-node#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.2",
+    "jsonwebtoken": "^8.5.1",
+    "sequelize": "^6.14.1"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.4.1",
+    "sucrase": "^3.20.3"
+  }
+}
