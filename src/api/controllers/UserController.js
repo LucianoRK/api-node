@@ -1,32 +1,35 @@
-import User from "../models/User";
-
-import db from "../../db";
+import { PrismaClient, Prisma } from '@prisma/client'
+const prisma = new PrismaClient()
 
 class UserController {
-    async index(req, res){
-        try {
-            await db.authenticate();
-            console.log('Connection has been established successfully.');
-          } catch (error) {
-            console.error('Unable to connect to the database:', error);
-          }
-    }
+  async index(req, res) {
+    console.log('teste.');
+  }
 
-    show(req, res){
+  async show(req, res) {
+    const body = req.body;
+    const user = await prisma.user.create({
+      data: {
+        email: 'elsa@prisma.io',
+        name: 'Elsa Prisma',
+        password: 'teste',
+      },
+    })
 
-    }
+    return res.json(user);
+  }
 
-    store(req, res){
+  store(req, res) {
 
-    }
+  }
 
-    update(req, res){
+  update(req, res) {
 
-    }
+  }
 
-    delete(req, res){
+  delete(req, res) {
 
-    }
+  }
 }
 
 export default new UserController;

@@ -1,20 +1,5 @@
-import { Sequelize, DataTypes, Model } from "sequelize";
-const sequelize = new Sequelize('mysql:memory');
+import { PrismaClient } from "@prisma/client";
 
-class User extends Model {}
+const prisma = new PrismaClient();
 
-User.init({
-  name: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  email: {
-    type: DataTypes.STRING,
-    allowNull: false
-  }
-}, {
-  sequelize, 
-  modelName: 'User'
-});
-
-export default User;
+export default prisma;

@@ -1,0 +1,43 @@
+version: '3'
+
+volumes:
+  data:
+
+services:
+  app:
+    container_name: app-node
+    build: .
+    command: bash -c "npm install && npm start"
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/app
+    networks:
+      - dev-network
+    environment:
+      POSTGRES_HOST: postgres:12345@postgres:5432
+      POSTGRES_DB: app
+      PORT: 5432
+    depends_on:
+      - postgres
+    links:
+      - postgres
+
+  postgres:
+    container_name: postgres
+    restart: always
+    image: postgres:14
+    ports:
+      - 5432:5432
+    networks:
+      - dev-network
+    environment:
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_DB: app
+    volumes:
+      - data:/var/lib/postgresql/data
+      - type: tmpfs
+        target: /dev/shm
+networks:
+  dev-network:
+    driver: bridge

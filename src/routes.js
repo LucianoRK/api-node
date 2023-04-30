@@ -3,6 +3,10 @@ import UserController from "./api/controllers/UserController";
 
 const routes = new Router();
 
+routes.get('/', (req, res) => {
+    res.send('Hello World routes')
+});
+
 //Usuário
 routes.get('/users', UserController.index);
 routes.get('/users/:id', UserController.show);
