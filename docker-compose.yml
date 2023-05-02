@@ -14,15 +14,6 @@ services:
       - .:/usr/app
     networks:
       - dev-network
-    environment:
-      POSTGRES_HOST: postgres:12345@postgres:5432
-      POSTGRES_DB: app
-      PORT: 5432
-    depends_on:
-      - postgres
-    links:
-      - postgres
-
   postgres:
     container_name: postgres
     restart: always
